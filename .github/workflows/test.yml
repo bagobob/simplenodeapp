@@ -13,11 +13,11 @@ jobs:
     
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-18.04]
-        node-version: [16.x]
+        os: [macos-latest, windows-latest, ubuntu-21.04]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/ 
         include:
-          - os: ubuntu-18.04
+          - os: ubuntu-21.04
             node-version: 15.x
             experimental: true
 
