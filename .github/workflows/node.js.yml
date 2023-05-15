@@ -1,24 +1,17 @@
-name: build
+name: steps
 on:
   push:
-    paths: 
-      - '**.js'
+    branches: [ master ]
 jobs:
-  build:
-    name: my job
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-        node: [14, 16, 18]
-        exclude:
-          - os: macos-latest
-            node: 14
+  run:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Use node.js ${{ matrix.node }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
-      - run: npm ci
-      - run: npm run build  --if-present
+    - name: My first step
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Boris
+        MIDDLE_NAME: Hermann
+        LAST_NAME: Tibago
+      run: |
+        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+    
